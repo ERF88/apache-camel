@@ -1,0 +1,60 @@
+services:
+  wiremock:
+    container_name: wiremock
+    image: wiremock/wiremock:latest
+    ports:
+      - 8080:8080
+    volumes:
+      - ./data/wiremock/__files:/home/wiremock/__files
+      - ./data/wiremock/mappings:/home/wiremock/mappings
+    entrypoint: [ "/docker-entrypoint.sh", "--global-response-templating", "--disable-gzip", "--verbose" ]
+    networks:
+      - apache-camel-network
+
+  mysql:
+    container_name: mysql
+    image: mysql:latest
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: always
+    networks:
+      - apache-camel-network
+
+  adminer:
+    container_name: adminer
+    image: adminer:latest
+    environment:
+      ADMINER_DEFAULT_SERVER: mysql
+    ports:
+      - 8081:8080
+    depends_on:
+      mysql:
+        condition: service_started
+    networks:
+      - apache-camel-network
+
+  activemq:
+    container_name: activemq
+    image: apache/activemq-classic
+    environment:
+      - ACTIVEMQ_OPTS= -Docsp.enable=false -Djetty.host=0.0.0.0 -Djava.util.logging.config.file=logging.properties -Djava.security.auth.login.config=/opt/apache-activemq/conf/login.config
+      - ACTIVEMQ_WEB_USER=admin
+      - ACTIVEMQ_WEB_PASSWORD=admin
+    ports:
+      - "8161:8161"
+      - "61616:61616"
+    volumes:
+      - ./data/activemq:/opt/activemq/data
+    networks:
+      - apache-camel-network
+
+networks:
+  apache-camel-network:
+    driver: bridge

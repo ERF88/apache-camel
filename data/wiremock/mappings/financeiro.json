@@ -1,0 +1,14 @@
+{
+  "request":{
+    "method":"POST",
+    "urlPath":"/webservices/financeiro",
+    "headers": {
+      "Content-Type": {
+        "contains": "text/xml"
+      }
+    }
+  },
+  "response":{
+    "status":202
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPath": "/negociacoes"
+  },
+  "response": {
+    "status": 200,
+    "body": "<negociacoes><negociacao><preco>28.0</preco><quantidade>7</quantidade><data>1726531200</data></negociacao><negociacao><preco>91.0</preco><quantidade>80</quantidade><data>1726531200</data></negociacao><negociacao><preco>77.0</preco><quantidade>66</quantidade><data>1726531200</data></negociacao><negociacao><preco>24.0</preco><quantidade>12</quantidade><data>1726531200</data></negociacao><negociacao><preco>11.0</preco><quantidade>1</quantidade><data>1726531200</data></negociacao></negociacoes>"
+  }
+}

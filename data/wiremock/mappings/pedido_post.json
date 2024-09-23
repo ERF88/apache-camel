@@ -1,0 +1,10 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPath": "/webservices/ebook/item"
+  },
+  "response": {
+    "status": 200,
+    "body": "service ebook ok"
+  }
+}

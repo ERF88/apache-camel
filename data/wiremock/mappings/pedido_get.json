@@ -1,0 +1,21 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/webservices/ebook/item",
+    "queryParameters": {
+      "ebookId": {
+        "matches": ".*"
+      },
+      "pedidoId": {
+        "matches": ".*"
+      },
+      "clienteId": {
+        "matches": ".*"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": "service ebook ok"
+  }
+}

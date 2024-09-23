@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- Definição do appender Console, que envia logs para o console -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- Layout padrão com a formatação da mensagem do log -->
+        <encoder>
+            <pattern>%level %d{HH:mm:ss.SSS} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Definir o nível de log global para DEBUG (pode ser alterado para INFO, WARN, ERROR) -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+    <!-- Exemplo de configuração de nível de log para um pacote específico -->
+    <logger name="com.github.erf88" level="INFO" />
+
+</configuration>
